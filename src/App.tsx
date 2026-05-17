@@ -81,7 +81,7 @@ export default function App() {
                 </div>
                 <div className="flex items-start gap-4 p-3 rounded-lg bg-white/5 border border-white/5">
                   <Cpu className="w-4 h-4 text-emerald-500 mt-0.5" />
-                  <p className="text-xs text-slate-400 leading-relaxed">基于 Gemini 1.5 的智能环境风险分析</p>
+                  <p className="text-xs text-slate-400 leading-relaxed">基于 ESP32-S3 的智能环境风险分析</p>
                 </div>
               </div>
 
