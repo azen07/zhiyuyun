@@ -1,0 +1,6 @@
+{
+  "name": "智渔云 AquaIntelligence",
+  "description": "基于ESP32与AI的淡水养殖智能化管理系统，集成实时水质监测、智能风险预警、自动化设备控制及历史数据分析。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

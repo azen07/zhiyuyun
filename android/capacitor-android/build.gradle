@@ -1,0 +1,25 @@
+// Temporary stub for capacitor-android module
+// This is a workaround to avoid Java version conflicts
+
+apply plugin: 'android-library'
+
+android {
+    namespace = "com.getcapacitor"
+    compileSdk 36
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 36
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    // Add any required dependencies here
+}

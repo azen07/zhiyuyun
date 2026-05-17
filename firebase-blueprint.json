@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "Pond": {
+      "title": "Pond",
+      "description": "Information about a specific aquaculture pond.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the pond." },
+        "location": { "type": "string", "description": "Physical location or coordinates." },
+        "ownerId": { "type": "string", "description": "UID of the user who owns this pond." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "ownerId"]
+    },
+    "SensorData": {
+      "title": "Sensor Data",
+      "description": "Real-time water quality sensor readings.",
+      "type": "object",
+      "properties": {
+        "temperature": { "type": "number", "description": "Water temperature in Celsius." },
+        "dissolvedOxygen": { "type": "number", "description": "Dissolved oxygen level in mg/L." },
+        "pH": { "type": "number", "description": "pH level of water." },
+        "ammonia": { "type": "number", "description": "Ammonia level in mg/L." },
+        "nitrite": { "type": "number", "description": "Nitrite level in mg/L." },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "HistoricalStats": {
+      "title": "Historical Stats",
+      "description": "Aggregated daily sensor statistics.",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "avgTemp": { "type": "number" },
+        "avgDO": { "type": "number" },
+        "minDO": { "type": "number" },
+        "status": { "type": "string", "enum": ["normal", "warning", "critical"] }
+      }
+    },
+    "Equipment": {
+      "title": "Equipment",
+      "description": "Status and control of pond hardware (aerators, feeders).",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["aerator", "feeder", "pump"] },
+        "status": { "type": "string", "enum": ["on", "off"] },
+        "mode": { "type": "string", "enum": ["manual", "auto"] },
+        "lastActionAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Alert": {
+      "title": "Alert",
+      "description": "AI-generated alerts or system notifications.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["warning", "danger", "info"] },
+        "message": { "type": "string" },
+        "severity": { "type": "string" },
+        "handled": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/ponds": {
+      "schema": "Pond",
+      "description": "Collection of aquaculture ponds."
+    },
+    "/ponds/{pondId}/sensors/realtime": {
+      "schema": "SensorData",
+      "description": "Singleton document for real-time sensor state."
+    },
+    "/ponds/{pondId}/history": {
+      "schema": "HistoricalStats",
+      "description": "Daily historical aggregates for a pond."
+    },
+    "/ponds/{pondId}/equipment": {
+      "schema": "Equipment",
+      "description": "Status of equipment associated with a pond."
+    },
+    "/ponds/{pondId}/alerts": {
+      "schema": "Alert",
+      "description": "Log of alerts generated for a pond."
+    },
+    "/ponds/{pondId}/readings": {
+      "schema": "SensorData",
+      "description": "High-frequency time-series sensor data for trend visualization."
+    }
+  }
+}
