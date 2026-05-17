@@ -5,8 +5,10 @@ const config: CapacitorConfig = {
   appName: '智渔云',
   webDir: 'dist',
   server: {
+    url: "https://azen07.github.io/zhiyuyun/",
     androidScheme: 'https'
-  }
+  },
+  plugins:{}
 };
 
 export default config;
